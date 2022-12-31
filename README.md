@@ -14,7 +14,7 @@ The GC% of entire chromosomes.
 
 ### <font color='red'>1.1 Setup of environment</font>
 
-Note: All you will find in the Jupyter file <font color='red'>Comparison of GC of species in Ensembl releases.ipynb</font>
+Note: All you will find in the Jupyter file <font color='red'>**Comparison of GC of species in Ensembl releases.ipynb**</font>
 
 This is the template to run your own setup of GC comparisons of species of your own.
 
