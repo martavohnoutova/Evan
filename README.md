@@ -1,24 +1,24 @@
-# Comparison of GC of species in Ensembl releases
+# Profiling of GC of species in Ensembl releases
 
 <font color='red'>**Guide of usage**</font>
 
 date: 31.12.2022
 
-Marta Vohnoutová, Radka Symonová
+Marta Vohnoutová
 
-version 0.1
+version 0.2
 
 ## <font color='red'>1. Introduction</font>
 
-The GC% of entire chromosomes.
+The goal of this tool is to profile GC% and repeats proportions along entire chromosome sequences.
+
+The concrete configuration steps follow.
 
 ### <font color='red'>1.1 Setup of environment</font>
 
-Note: All you will find in the Jupyter file <font color='red'>**Comparison of GC of species in Ensembl releases.ipynb**</font>
+This is the template to run your own setup of GC profiling of your species.
 
-This is the template to run your own setup of GC comparisons of species of your own.
-
-1. **At first, you must create your environment.**
+a. **At first, you need to create your environment.**
 
 - **install Anaconda (description for linux Ubuntu v.22)**
 
@@ -37,17 +37,17 @@ $ bash Anaconda3-5.3.1-Linux-x86_64.sh
 
 </font>
 
-2. **Create and activate your environment**
+b. **Activate your environment**
 
 <font color= 'green'>conda create -n evan biopython</font>
 
 <font color='green'>source activate evan</font>
 
-3. **Install necessary packages**
+c. **Install necessary packages**
 
 <font color='green'>conda install scipy matplotlib jupyter-notebook pip pandas numpy wget pyensembl gzip fpdf</font>
 
-4. **Start Jupyter Notebook**
+d. **Start Jupyter Notebook**
 
 Go to the home directory, and start Juputer Notebook.
 
