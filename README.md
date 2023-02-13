@@ -328,7 +328,7 @@ plt.savefig(f'{where_i_am}{species}/soft_unmask_per_chromosomes_{species}.png') 
 plt.show()
 </I>
 
-<img src = "https://github.com/martavohnoutova/Evan/blob/main/release_108_profile_soft_unmask_24.png">
+<img src = "https://github.com/martavohnoutova/Evan/blob/main/release_108_profile_soft_unmask_per_chromosomes_cottoperca_gobio.png">
 
 ### <font color='red'>Relations between release ..... and .... - whole sequence</font>
 
