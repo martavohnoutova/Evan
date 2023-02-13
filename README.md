@@ -559,108 +559,162 @@ for rec in SeqIO.parse(f"{where_is_fasta}{my_fasta_file}", "fasta"): # replace t
         plt.show()
 </i>
 
-<img src = "
+<img src = "https://github.com/martavohnoutova/Evan/blob/main/cottoperca_OIST_nobar_soft_unmask_ENA_LR131931_LR131931.1.15932363.png">
 
+etc.
 
+etc.
 
+### <font color='red'>Read graphs one by one and merge them all</font>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Read graphs one by one and merge them all
+<i>
 # list of all graph images sorted to chromosomes no.
+
 all_images = sorted([f for f in glob(f"{where_i_am}{species}/*nobar*.png")],key=lambda x: x.split('.')[-2], reverse = True)
+
 all_images
+
 ['/home/rsymonova/Evan/Evan/Vohnoutova_et_al2023/cottoperca_OIST/cottoperca_OIST_nobar_soft_unmask_ENA|LR131933|LR131933.1.png',
+
  '/home/rsymonova/Evan/Evan/Vohnoutova_et_al2023/cottoperca_OIST/cottoperca_OIST_nobar_soft_unmask_ENA|LR131916|LR131916.1.png',
+ 
  '/home/rsymonova/Evan/Evan/Vohnoutova_et_al2023/cottoperca_OIST/cottoperca_OIST_nobar_soft_unmask_ENA|LR131920|LR131920.1.png',
+ 
  '/home/rsymonova/Evan/Evan/Vohnoutova_et_al2023/cottoperca_OIST/cottoperca_OIST_nobar_soft_unmask_ENA|LR131924|LR131924.1.png',
+ 
  '/home/rsymonova/Evan/Evan/Vohnoutova_et_al2023/cottoperca_OIST/cottoperca_OIST_nobar_soft_unmask_ENA|LR131935|LR131935.1.png',
+ 
  '/home/rsymonova/Evan/Evan/Vohnoutova_et_al2023/cottoperca_OIST/cottoperca_OIST_nobar_soft_unmask_ENA|LR131921|LR131921.1.png',
+ 
  '/home/rsymonova/Evan/Evan/Vohnoutova_et_al2023/cottoperca_OIST/cottoperca_OIST_nobar_soft_unmask_ENA|LR131936|LR131936.1.png',
+ 
  '/home/rsymonova/Evan/Evan/Vohnoutova_et_al2023/cottoperca_OIST/cottoperca_OIST_nobar_soft_unmask_ENA|LR131923|LR131923.1.png',
+ 
  '/home/rsymonova/Evan/Evan/Vohnoutova_et_al2023/cottoperca_OIST/cottoperca_OIST_nobar_soft_unmask_ENA|LR131930|LR131930.1.png',
+ 
  '/home/rsymonova/Evan/Evan/Vohnoutova_et_al2023/cottoperca_OIST/cottoperca_OIST_nobar_soft_unmask_ENA|LR131934|LR131934.1.png',
+ 
  '/home/rsymonova/Evan/Evan/Vohnoutova_et_al2023/cottoperca_OIST/cottoperca_OIST_nobar_soft_unmask_ENA|LR131939|LR131939.1.png',
+ 
  '/home/rsymonova/Evan/Evan/Vohnoutova_et_al2023/cottoperca_OIST/cottoperca_OIST_nobar_soft_unmask_ENA|LR131938|LR131938.1.png',
+ 
  '/home/rsymonova/Evan/Evan/Vohnoutova_et_al2023/cottoperca_OIST/cottoperca_OIST_nobar_soft_unmask_ENA|LR131917|LR131917.1.png',
+ 
  '/home/rsymonova/Evan/Evan/Vohnoutova_et_al2023/cottoperca_OIST/cottoperca_OIST_nobar_soft_unmask_ENA|LR131932|LR131932.1.png',
+ 
  '/home/rsymonova/Evan/Evan/Vohnoutova_et_al2023/cottoperca_OIST/cottoperca_OIST_nobar_soft_unmask_ENA|LR131918|LR131918.1.png',
+ 
  '/home/rsymonova/Evan/Evan/Vohnoutova_et_al2023/cottoperca_OIST/cottoperca_OIST_nobar_soft_unmask_ENA|LR131929|LR131929.1.png',
+ 
  '/home/rsymonova/Evan/Evan/Vohnoutova_et_al2023/cottoperca_OIST/cottoperca_OIST_nobar_soft_unmask_ENA|LR131937|LR131937.1.png',
+ 
  '/home/rsymonova/Evan/Evan/Vohnoutova_et_al2023/cottoperca_OIST/cottoperca_OIST_nobar_soft_unmask_ENA|LR131926|LR131926.1.png',
+ 
  '/home/rsymonova/Evan/Evan/Vohnoutova_et_al2023/cottoperca_OIST/cottoperca_OIST_nobar_soft_unmask_ENA|LR131919|LR131919.1.png',
+ 
  '/home/rsymonova/Evan/Evan/Vohnoutova_et_al2023/cottoperca_OIST/cottoperca_OIST_nobar_soft_unmask_ENA|LR131922|LR131922.1.png',
+ 
  '/home/rsymonova/Evan/Evan/Vohnoutova_et_al2023/cottoperca_OIST/cottoperca_OIST_nobar_soft_unmask_ENA|LR131928|LR131928.1.png',
+ 
  '/home/rsymonova/Evan/Evan/Vohnoutova_et_al2023/cottoperca_OIST/cottoperca_OIST_nobar_soft_unmask_ENA|LR131931|LR131931.1.png',
+ 
  '/home/rsymonova/Evan/Evan/Vohnoutova_et_al2023/cottoperca_OIST/cottoperca_OIST_nobar_soft_unmask_ENA|LR131925|LR131925.1.png',
+ 
  '/home/rsymonova/Evan/Evan/Vohnoutova_et_al2023/cottoperca_OIST/cottoperca_OIST_nobar_soft_unmask_ENA|LR131927|LR131927.1.png']
+ 
 images = [Image.open(f"{x}") for x in all_images]
+
 widths, heights = zip(*(i.size for i in images))
+
 max_width = max(widths)
+
 total_height = sum(heights)
+
 new_im = Image.new('RGB', (max_width, total_height))
 ​
 y_offset = 0
+
 for im in images:
+
   new_im.paste(im, (0,y_offset,))
+  
   y_offset += im.size[1]
 ​
 new_im.save(f'{where_i_am}{species}/{species}_all_graphs.png')
-Read small graphs one by one and merge them all to two columns
+
+### <font color='red'>Read small graphs one by one and merge them all to two columns</font>
+<i>
 def get_concat(all_images,im_width,im_height):
     
     images = [Image.open(all_images[i]) for i in range(len(all_images))]
+    
     if len(all_images)%2 == 0:
+    
         how_high=len(all_images)
+        
     else:
+    
         how_high=len(all_images)+1
         
     dst = Image.new('RGB', (2*im_width, int((how_high * im_height)/2)))
+    
     for i in range(0,len(images)+1,2):
+    
         try:
+        
             dst.paste(images[i], (0, int((i * im_height)/2)))
+            
         except IndexError:
+        
             pass
-        try:            
+            
+        try:  
+        
             dst.paste(images[i+1], (im_width,  int((i * im_height)/2)))
+            
         except IndexError:
+        
             pass
+            
     return dst
+    
 im = Image.open(all_images[0])
-im_width=im.size[0]
-im_height=im.size[1]
-im.close()
-get_concat(all_images,im_width,im_height).save(f'{where_i_am}{species}/{species}_all_small_graphs.png')
-Put all png images to pdf file
-In the end all the files are put together into the pdf file.
 
+im_width=im.size[0]
+
+
+im_height=im.size[1]
+
+im.close()
+
+get_concat(all_images,im_width,im_height).save(f'{where_i_am}{species}/{species}_all_small_graphs.png')
+
+
+
+### <font color='red'>Put all png images to pdf file</font>
+
+In the end all the files are put together into the pdf file.
+<i>
 import os
+
 from fpdf import FPDF
+
 imagelist=!ls | grep .png
+
 del imagelist[-1] # delete what does not delong to chromosomes
+
 imagelist=sorted(imagelist,key= lambda x:int(x.split('_')[-1].split('.')[0]))
+
 pdf = FPDF(orientation = 'L')
+
 # imagelist is the list with all image filenames
+
 for image in imagelist:
+
     pdf.add_page()
+    
     pdf.image(image,x=1,y=10,w=300,h=135)
+    
 pdf.output("Profiles_gastropod.pdf", "F")  # replace the name and relese no.
 ​
-
+</i>
