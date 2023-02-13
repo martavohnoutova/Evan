@@ -689,7 +689,7 @@ im.close()
 
 get_concat(all_images,im_width,im_height).save(f'{where_i_am}{species}/{species}_all_small_graphs.png')
 
-
+<img src = "https://github.com/martavohnoutova/Evan/blob/main/cottoperca_OIST_all_small_graphs.png">
 
 ### <font color='red'>Put all png images to pdf file</font>
 
