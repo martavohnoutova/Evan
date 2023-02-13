@@ -327,108 +327,171 @@ plt.savefig(f'{where_i_am}{species}/soft_unmask_per_chromosomes_{species}.png') 
 
 plt.show()
 </I>
-​
-Relations between release ..... and .... - whole sequence
-GC DNA release 94
+
+<img src = "https://github.com/martavohnoutova/Evan/blob/main/cottoperca_OIST_profile_soft_unmask_ENA_LR131920_LR131920.1.png">
+
+### <font color='red'>Relations between release ..... and .... - whole sequence</font>
+
+### <font color='red'>GC DNA release 94</font>
+
 Replace the path with your
 
-sec_values_94 = ''
-c=[]
-for rec in SeqIO.parse("/home/marta/.cache/pyensembl/fCotGob3.1/ensembl108/"+files_108[4]"+files_94[4], "fasta"):  # replace the path
-    sec_values_94 += rec.seq
-​
-gc_94_all = gc_fraction(sec_values_94)
-​
-GC DNA release 108
+### <font color='red'>GC DNA release 108</font>
+<i>
 sec_values = ''
+
 c=[]
+
 for rec in SeqIO.parse(f"{where_is_fasta}{my_fasta_file}","fasta"): # replace the path
+
     sec_values += rec.seq
     
 gc_all = gc_fraction(sec_values)
-Results - %GC rel.94 / %GC rel.108 (not here)
-Results - here %GC rel.108 only
-#print(f'%GC release 94 is {gc_94_all}, %GC release 108 is {gc_108_all}, %GC rel.94 / %GC rel 108 is {gc_94_all/gc_108_all}')
-print(f'%GC of {species} is {gc_all}')
-%GC of cottoperca_OIST is 0.4092285307602729
-Soft vs Unmasked
-gc_all.items()
-dict_items([('cottoperca_OIST', (0.4092285307602729, 0.25015370660549935))])
-GC to ATGC, gc to atgc
-comment what is not appropriate / here rel.94
+</i>
 
+### <font color='red'>Results - here %GC rel.108 only</font>
+<i>
+#print(f'%GC release 94 is {gc_94_all}, %GC release 108 is {gc_108_all}, %GC rel.94 / %GC rel 108 is {gc_94_all/gc_108_all}')
+
+print(f'%GC of {species} is {gc_all}')
+
+%GC of cottoperca_OIST is 0.4092285307602729
+</i>
+
+### <font color='red'>Soft vs Unmasked</font>
+<i>
+gc_all.items()
+
+dict_items([('cottoperca_OIST', (0.4092285307602729, 0.25015370660549935))])
+</i>
+
+### <font color='red'>GC to ATGC, gc to atgc</font>
+
+comment what is not appropriate / here rel.94
+<i>
 GC_to_ATGC={}
 ​
 atgc_lower=sum(1 for i in sec_values if i in 'atgc')
+
 gc_lower=sum(1 for i in sec_values if i in 'gc')
+
 atgc_upper=sum(1 for i in sec_values if i in 'ATGC')
+
 gc_upper=sum(1 for i in sec_values if i in 'GC')
 ​
-GC_to_ATGC['lower']=gc_lower/atgc_lower  # distract N and n, replace release no. 
+GC_to_ATGC['lower']=gc_lower/atgc_lower  # distract N and n, replace release no.
+
 GC_to_ATGC['upper']=gc_upper/atgc_upper  # distract N and n, replace release no.
 ​
 GC_to_ATGC.items()
+
 dict_items([('lower', 0.4023479510007686), ('upper', 0.4115239378931707)])
-GC soft and (small) and unmasked (capital) repetitions - by chromosomes
-GC DNA release ..... - by chromosomes
+</i>
+
+### <font color='red'>GC soft and (small) and unmasked (capital) repetitions - by chromosomes</font>
+
+### <font color='red'>GC DNA release ..... - by chromosomes</font>
+
+<i>
 my_fasta_file  # Check if you choose right file
+
 'Cottoperca_OIST.fa'
+
 lengths=[]
+
 for rec in SeqIO.parse(f"{where_is_fasta}{my_fasta_file}", "fasta"): 
+
         lengths.append(len(rec.seq))
+        
 max_len=max(lengths)
+
 print(max_len)
+
 30479438
+
 max_len//12000
+
 2539
+
 # adjusted chromosome density
+
 for rec in SeqIO.parse(f"{where_is_fasta}{my_fasta_file}", "fasta"): # replace the path
+
     GC_chromosoms_windowed={}  # per chromosome
+    
     if eval(what_we_filter):
+    
         #print(rec.id)  
+        
         for w in range(0,len(rec.seq),window):
               
             #print(range(i,i+window),len(gc_values_94[i:i+window]))
+            
             soft_mask=sum(1 for i in rec.seq[w:w+window] if i in 'acgt')
+            
             ALL_all=sum(1 for i in rec.seq[w:w+window] if i in 'acgtACGT')
+            
             GC_fraction=gc_fraction(rec.seq[w:w+window])
             
             try:
+            
                 GC_chromosoms_windowed[str(w)+'|'+ rec.id]=(GC_fraction,soft_mask/ALL_all)  # distract N and n    
+                
                 #print(range(i,i+window),len(gc_values_94[i:i+window])) 
+                
             except ZeroDivisionError:
+            
                 GC_chromosoms_windowed[str(w)+'|'+ rec.id]=(GC_fraction,0.0)  # distract N and n
             
         #fig = plt.figure(figsize=(int(50* (len(rec.seq)/max_len)),int(20* (len(rec.seq)/max_len))))
+        
         fig = plt.figure(figsize=(50,20))
+        
         ax1 = fig.add_subplot(111)
+        
         ax1.set_facecolor("lightgrey")   
         
         names = list(GC_chromosoms_windowed.keys())
         
         v = list(GC_chromosoms_windowed.values())
+        
         v1=[i[0] for i in v]
+        
         v2=[i[1] for i in v]
+        
         names_part=[n.split('|')[0] for n in names]
        
         sc=ax1.scatter(names_part,v1, s=5, c=v2, cmap='RdYlGn', marker="o", ) # only GC fraction in y axe, only chromosomes
+        
         ax1.xaxis.set_ticks(np.arange(0, max_len//1000, max_len//12000))
+        
         ax1.grid(True)        
 ​
         plt.title(f'GC% values of {species} - chromosome {rec.id}', fontsize = 35) # replace the animal name and release no.
+        
         plt.ylabel('GC fraction', fontsize = 30)
+        
         plt.xlabel(f'Chromosome {rec.id} windows', fontsize = 30)
+        
         plt.xticks(fontsize = 30, rotation = 45)
+        
         plt.yticks(fontsize = 30)
+        
         plt.colorbar(sc,label="Red 0% soft-masked to green 100% soft-masked", orientation="horizontal")
+        
         plt.savefig(f'{where_i_am}{species}/{species}_profile_soft_unmask_{rec.id}.png')  # replace the animal name and release no.
+        
         plt.show()
         
         
         with open(f'{where_i_am}{species}/{species}_profile_soft_unmask_{rec.id}.csv','w') as f: # replace the animal name and release no.
+        
             csv_file = csv.writer(f)
+            
             csv_file.writerows(GC_chromosoms_windowed.items())
-                 
+</i>
+
+<img src = "
         
 
 
