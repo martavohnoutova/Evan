@@ -491,68 +491,75 @@ for rec in SeqIO.parse(f"{where_is_fasta}{my_fasta_file}", "fasta"): # replace t
             csv_file.writerows(GC_chromosoms_windowed.items())
 </i>
 
-<img src = "
-        
+<img src = "https://github.com/martavohnoutova/Evan/blob/main/cottoperca_OIST_profile_soft_unmask_ENA_LR131920_LR131920.1.png">
 
+etc.
 
+etc.
 
+### <font color='red'>Merge all graph images</font>
 
+#### <font color='red'>Prepare small graphs without colorbars</font>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Merge all graph images
-Prepare small graphs without colorbars
+<i>
 # adjusted chromosome density
+
 for rec in SeqIO.parse(f"{where_is_fasta}{my_fasta_file}", "fasta"): # replace the path
+
     GC_chromosoms_windowed={}  # per chromosome
+    
     if eval(what_we_filter):
+    
         #print(rec.id)  
+        
         for w in range(0,len(rec.seq),window):
               
             #print(range(i,i+window),len(gc_values_94[i:i+window]))
+            
             soft_mask=sum(1 for i in rec.seq[w:w+window] if i in 'acgt')
+            
             ALL_all=sum(1 for i in rec.seq[w:w+window] if i in 'acgtACGT')
+            
             GC_fraction=gc_fraction(rec.seq[w:w+window])
             
             try:
-                GC_chromosoms_windowed[str(w)+'|'+ rec.id]=(GC_fraction,soft_mask/ALL_all)  # distract N and n    
+            
+                GC_chromosoms_windowed[str(w)+'|'+ rec.id]=(GC_fraction,soft_mask/ALL_all)  # distract N and n  
+                
                 #print(range(i,i+window),len(gc_values_94[i:i+window])) 
+                
             except ZeroDivisionError:
+            
                 GC_chromosoms_windowed[str(w)+'|'+ rec.id]=(GC_fraction,0.0)  # distract N and n
             
         #fig = plt.figure(figsize=(int(50* (len(rec.seq)/max_len)),int(20* (len(rec.seq)/max_len))))
+        
         fig = plt.figure(figsize=(25,10))
+        
         ax1 = fig.add_subplot(111)
         
         names = list(GC_chromosoms_windowed.keys())
+        
         v = list(GC_chromosoms_windowed.values())
+        
         v1=[i[0] for i in v]
+        
         v2=[i[1] for i in v]
+        
         names_part=[n.split('|')[0] for n in names]
        
         sc=ax1.scatter(names_part,v1, s=5, c=v2, cmap='RdYlGn', marker="o", ) # only GC fraction in y axe, only chromosomes
-        ax1.xaxis.set_ticks(np.arange(0, max_len//1000, max_len//12000))    
-        plt.title(f'GC% values of {species} - chromosome {rec.id}', fontsize = 35) # replace the animal name and release no.        
+        
+        ax1.xaxis.set_ticks(np.arange(0, max_len//1000, max_len//12000)) 
+        
+        plt.title(f'GC% values of {species} - chromosome {rec.id}', fontsize = 35) # replace the animal name and release no. 
+        
         plt.savefig(f'{where_i_am}{species}/{species}_nobar_soft_unmask_{rec.id}.{len(rec.seq)}.png')  # replace the animal name and release no.
+        
         plt.show()
+</i>
 
+<img src = "
 
 
 
